@@ -111,7 +111,7 @@ public class CraftingTablePatch {
                 convertRecipe(Arrays.asList(input), output);
             } catch (RuntimeException e) {
                 String name = PlainTextComponentSerializer.plainText().serialize(output.displayName());
-                SaneCrafting.getInstance().getLogger().severe("Failed to convert Enhanced Crafting Table recipe for " + name);
+                SaneCrafting.getInstance().getLogger().severe("无法为该物品转换增强型工作台配方：" + name);
                 e.printStackTrace();
                 continue;
             }
@@ -119,6 +119,6 @@ public class CraftingTablePatch {
             changedRecipes++;
         }
 
-        SaneCrafting.getInstance().getLogger().info("Applied CraftingTable patch and converted " + changedRecipes + " Enhanced Crafting Table recipes to regular Crafing Table recipes");
+        SaneCrafting.getInstance().getLogger().info("已应用工作台补丁，转换了 " + changedRecipes + " 个增强型工作台配方到原版工作台配方。");
     }
 }

@@ -30,7 +30,7 @@ public final class UsableInWorkbenchPatch implements Listener {
         }
 
         Bukkit.getServer().getPluginManager().registerEvents(new UsableInWorkbenchPatch(), SaneCrafting.getInstance());
-        SaneCrafting.getInstance().getLogger().info("Applied UsableInWorkbench patch");
+        SaneCrafting.getInstance().getLogger().info("已应用工作台可用补丁");
     }
 
     @SuppressWarnings("Convert2streamapi")

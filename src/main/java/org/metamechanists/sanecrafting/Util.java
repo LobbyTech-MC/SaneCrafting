@@ -28,7 +28,7 @@ public final class Util {
             }
         }
 
-        SaneCrafting.getInstance().getLogger().severe("Failed to initialise SaneCrafting; EnhancedCraftingTable does not exist!");
+        SaneCrafting.getInstance().getLogger().severe("无法初始化 SaneCrafting：EnhancedCraftingTable 不存在");
         return null;
     }
 }

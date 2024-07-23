@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 // I woke up, and wrote this code. My life has been 10x better ever since. Follow the mirror.
 @UtilityClass
 public class RecipeLorePatch {
-    private final ItemStack ITEMSTACK = new CustomItemStack(Material.CRAFTING_TABLE, "&bShaped Crafting Recipe");
+    private final ItemStack ITEMSTACK = new CustomItemStack(Material.CRAFTING_TABLE, "&b有序合成");
     private final NamespacedKey KEY = new NamespacedKey("minecraft", "shaped");
 
     public void apply() {
@@ -37,7 +37,7 @@ public class RecipeLorePatch {
                 recipeTypeKeyField.set(RecipeType.ENHANCED_CRAFTING_TABLE, KEY);
             }
         } catch (IllegalAccessException | IllegalArgumentException | SecurityException | NoSuchFieldException e) {
-            SaneCrafting.getInstance().getLogger().info("Failed to apply ChangeRecipeTypePatch");
+            SaneCrafting.getInstance().getLogger().info("无法应用配方描述更改补丁");
             e.printStackTrace();
             return;
         }

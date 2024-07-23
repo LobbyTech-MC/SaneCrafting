@@ -1,7 +1,8 @@
-## SaneCrafting
-A tiny addon QoL addon to make Slimefun feel more vanilla-y by allowing Enhanced Crafting Table recipes to be crafted in a normal Crafting Table.
+## SaneCrafting 正常合成
 
-## Features
-- Allows crafting all Enhanced Crafting Table recipes in a regular crafting grid
-- Adds all Enhanced Crafting Table recipes to the Recipe Book so you can autofill them JEI-style (Caveat: The recipe book can't correctly identify which of the new recipes can be crafted with the material in your inventory, so some may show up as craftable when they're not - this is an inbuilt limitation of Minecraft)
-- Recipes will only show up in crafting book once researched (and obviously will be uncraftable until then)
+一个小型 QoL 附属，可以让粘液科技中的增强型工作台配方在原版工作台中使用。
+
+## 功能
+- 允许在原版工作台中合成所有的增强型工作台配方
+- 所有增强型工作台配方添加到了配方书中，允许你使用类似 JEI 的模组来快捷摆放。（注意：配方书无法正确识别所需的物品是否满足要求，因此部分显示可以合成的物品实际不可合成。这是 Minecraft 原版的限制）
+- 只有解锁的物品配方才会显示在配方书中

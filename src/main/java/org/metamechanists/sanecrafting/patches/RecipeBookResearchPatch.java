@@ -22,7 +22,7 @@ public final class RecipeBookResearchPatch implements Listener {
 
     public static void apply() {
         Bukkit.getServer().getPluginManager().registerEvents(new RecipeBookResearchPatch(), SaneCrafting.getInstance());
-        SaneCrafting.getInstance().getLogger().info("Applied RecipeBookResearch patch");
+        SaneCrafting.getInstance().getLogger().info("已应用配方书研究补丁");
     }
 
     @EventHandler

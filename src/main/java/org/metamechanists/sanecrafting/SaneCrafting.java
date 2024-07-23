@@ -3,6 +3,7 @@ package org.metamechanists.sanecrafting;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import lombok.Getter;
 import lombok.NonNull;
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +12,8 @@ import org.metamechanists.sanecrafting.patches.CraftingTablePatch;
 import org.metamechanists.sanecrafting.patches.RecipeBookResearchPatch;
 import org.metamechanists.sanecrafting.patches.RecipeLorePatch;
 import org.metamechanists.sanecrafting.patches.UsableInWorkbenchPatch;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
+
+import java.util.logging.Level;
 
 
 public final class SaneCrafting extends JavaPlugin implements SlimefunAddon {
@@ -23,8 +25,15 @@ public final class SaneCrafting extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
 
-        if (getConfig().getBoolean("auto-update") && !getPluginVersion().contains("MODIFIED")) {
-            new BlobBuildUpdater(this, getFile(), "SaneCrafting").start();
+        if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
+            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
+            getLogger().log(Level.SEVERE, "从此处下载: https://50L.cc/gzlib");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        if (getConfig().getBoolean("auto-update") && getPluginVersion().startsWith("Dev")) {
+            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "SaneCrafting", "master");
         }
 
         new Metrics(this, BSTATS_ID);
