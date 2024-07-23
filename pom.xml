@@ -11,6 +11,7 @@
 
     <build>
         <finalName>SaneCrafting</finalName>
+        <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -103,9 +104,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.Slimefun</groupId>
+            <groupId>com.github.SlimefunGuguProject</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-37</version>
+            <version>2024.3</version>
             <scope>provided</scope>
         </dependency>
 

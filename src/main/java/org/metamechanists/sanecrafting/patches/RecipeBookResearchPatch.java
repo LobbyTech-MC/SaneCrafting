@@ -2,6 +2,7 @@ package org.metamechanists.sanecrafting.patches;
 
 import io.github.thebusybiscuit.slimefun4.api.events.ResearchUnlockEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -27,7 +28,10 @@ public final class RecipeBookResearchPatch implements Listener {
 
     @EventHandler
     public static void onJoin(@NotNull PlayerJoinEvent e) {
-        if (Slimefun.getRegistry().isResearchingEnabled()) {
+        // force get profile once
+        PlayerProfile.get(e.getPlayer(), profile -> {});
+
+        if (Slimefun.getConfigManager().isResearchingEnabled()) {
             return;
         }
 

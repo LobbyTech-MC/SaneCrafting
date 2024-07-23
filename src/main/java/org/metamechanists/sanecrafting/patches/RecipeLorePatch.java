@@ -42,6 +42,6 @@ public class RecipeLorePatch {
             return;
         }
 
-        SaneCrafting.getInstance().getLogger().info("Applied RecipeLore patch");
+        SaneCrafting.getInstance().getLogger().info("已应用配方描述更改补丁");
     }
 }
