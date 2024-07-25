@@ -1,6 +1,7 @@
 package org.metamechanists.sanecrafting;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import lombok.Getter;
 import lombok.NonNull;
 import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
@@ -25,6 +26,8 @@ public final class SaneCrafting extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
 
+        var config = new Config(this);
+
         if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
             getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
             getLogger().log(Level.SEVERE, "从此处下载: https://50L.cc/gzlib");
@@ -32,7 +35,7 @@ public final class SaneCrafting extends JavaPlugin implements SlimefunAddon {
             return;
         }
 
-        if (getConfig().getBoolean("auto-update") && getPluginVersion().startsWith("Dev")) {
+        if (config.getBoolean("auto-update") && getPluginVersion().startsWith("Build")) {
             GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "SaneCrafting", "master");
         }
 

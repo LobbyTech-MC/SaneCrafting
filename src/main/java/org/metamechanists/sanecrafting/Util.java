@@ -1,5 +1,7 @@
 package org.metamechanists.sanecrafting;
 
+import com.github.houbb.pinyin.constant.enums.PinyinStyleEnum;
+import com.github.houbb.pinyin.util.PinyinHelper;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -13,10 +15,17 @@ public final class Util {
 
     // Technically could lead to clashes if two shaped recipes for same item but... hopefully not...
     public static @NotNull String generateRecipeId(@NotNull ItemStack output) {
-        String normalisedName = SlimefunItem.getByItem(output).getId()
-                .toLowerCase()
-                .replace(' ', '_')
-                .replaceAll("[^a-z0-9/._\\-]", ""); // remove characters not allowed in id
+        var sfItem = SlimefunItem.getByItem(output);
+        String normalisedName;
+        if (sfItem != null) {
+            normalisedName = sfItem.getId();
+        } else {
+            normalisedName = PlainTextComponentSerializer.plainText().serialize(output.displayName());
+            normalisedName = PinyinHelper.toPinyin(normalisedName, PinyinStyleEnum.NUM_LAST) + "_" + normalisedName.hashCode();
+        }
+        normalisedName = normalisedName.toLowerCase()
+            .replace(' ', '_')
+            .replaceAll("[^a-z0-9/._\\-]", ""); // remove characters not allowed in id
         return "sanecrafting_" + normalisedName;
     }
 
