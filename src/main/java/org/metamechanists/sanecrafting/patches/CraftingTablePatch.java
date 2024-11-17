@@ -48,7 +48,10 @@ public class CraftingTablePatch {
             for (int x = 0; x < 3; x++) {
                 int i = y*3 + x;
                 char character = itemCharacters.charAt(i);
-                ItemStack itemStack = input.get(i);
+                ItemStack itemStack = null;
+                if (i < input.size()) {
+                	itemStack = input.get(i);
+                }
                 if (itemStack == null) {
                     shape.set(y, shape.get(y).replace(character, ' '));
                 } else {
